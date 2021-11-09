@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather app</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,200&family=Roboto+Slab&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/1b4d2decd1.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="source/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container main">
+      <div class="row">
+        <div class="col firstSection">
+          <i class="fas fa-cloud-sun emojiBig"></i>
+          <span class="temperatureBig"
+            ><span id="mainTemperature">12°C</span>
+            <span class="celcius-fahrenheit">
+              <span id="celcius">°C </span> | <span id="fahrenheit">°F</span>
+            </span>
+          </span>
+
+          <span class="clear">Clear</span>
+
+          <span class="description">
+            <span id="humidity">Humidity: 46%</span> <br />
+            <span id="wind">Wind: 0 km/h</span>
+          </span>
+        </div>
+
+        <div class="col secondSection">
+          <span class="city"> Zhytomyr</span>
+          <br />
+          <span class="date"> Sunday, 3/10</span>
+
+          <span class="time"> 16:20 </span>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <br />
+            <form id="searchForm">
+              <input
+                type="search"
+                class="form-control searchBar"
+                id="exampleFormControlInput1"
+                placeholder="Search city"
+              />
+              <button
+                type="button"
+                class="btn btn-light searchButton"
+                id="searchCityButton"
+              >
+                <i class="fas fa-search-location"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-light searchButton geolocationButton"
+              >
+                <i class="fas fa-map-pin"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div class="container forecast">
+        <div class="row">
+          <div class="col">
+            <span class="weekDay">Mon</span>
+            <span class="forecastDay">04/10</span> <br />
+            <span class="emoji"><i class="fas fa-cloud-rain"></i></span>
+            <br />
+            <span class="highestTemperature">10 °C</span>
+            <span class="lowestTemperature">6 °C</span>
+          </div>
+          <div class="col">
+            <span class="weekDay">Tue</span>
+            <span class="forecastDay">05/10</span> <br />
+            <span class="emoji"><i class="fas fa-poo-storm"></i></span>
+            <br /><span class="highestTemperature">8 °C</span>
+            <span class="lowestTemperature">4 °C</span>
+          </div>
+          <div class="col">
+            <span class="weekDay">Wed</span
+            ><span class="forecastDay">06/10</span> <br /><span class="emoji"
+              ><i class="fas fa-cloud-sun"></i>
+            </span>
+            <br /><span class="highestTemperature">11 °C</span>
+            <span class="lowestTemperature">6 °C</span>
+          </div>
+          <div class="col">
+            <span class="weekDay">Thu</span>
+            <span class="forecastDay">07/10</span> <br /><span class="emoji"
+              ><i class="fas fa-cloud-sun"></i>
+            </span>
+            <br /><span class="highestTemperature">14 °C</span>
+            <span class="lowestTemperature">9 °C</span>
+          </div>
+          <div class="col">
+            <span class="weekDay">Fri</span>
+            <span class="forecastDay">08/10</span>
+            <br />
+            <span class="emoji"><i class="fas fa-sun"></i></span> <br /><span
+              class="highestTemperature"
+              >18 °C</span
+            >
+            <span class="lowestTemperature">12 °C</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="source/script.js"></script>
+  </body>
+</html>
