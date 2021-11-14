@@ -4,7 +4,7 @@
   padding-left: 172px;
 }
 .date {
-  font-size: 24px;
+  font-size: 23px;
   color: #656d7e;
   opacity: 0.7;
   text-align: left;
@@ -46,6 +46,7 @@
 }
 .main {
   margin: 100px auto;
+  margin-bottom: 10px;
   padding: 80px;
   border: 2px solid;
   max-width: 1000px;
@@ -87,6 +88,13 @@
   font-weight: 500;
   color: #656d7e;
   font-family: "Roboto Slab", serif;
+}
+.source-code {
+  display: block;
+  text-align: center;
+}
+#sourceCodeLink {
+  text-decoration: none;
 }
 .weekDay {
   font-weight: bolder;
