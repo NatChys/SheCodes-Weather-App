@@ -1,10 +1,10 @@
 .celcius-fahrenheit {
   font-size: 16px;
-  display: block;
-  padding-left: 172px;
+  position: relative;
+  top: -28px;
 }
 .date {
-  font-size: 23px;
+  font-size: 20px;
   color: #656d7e;
   opacity: 0.7;
   text-align: left;
@@ -49,9 +49,10 @@
   margin-bottom: 10px;
   padding: 80px;
   border: 2px solid;
-  max-width: 1000px;
+  max-width: 1050px;
   font-family: "Poppins", sans-serif;
 }
+
 .container .forecast {
   padding: 20px;
 }
