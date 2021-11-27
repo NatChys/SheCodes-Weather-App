@@ -43,6 +43,10 @@
 }
 .description {
   color: #656d7e;
+  margin-left: 20px;
+}
+#wind {
+  margin-left: 20px;
 }
 .main {
   margin: 100px auto;
@@ -62,6 +66,7 @@
   opacity: 0.7;
   text-align: left;
   display: block;
+  margin-left: 20px;
 }
 .lowestTemperature {
   display: block;

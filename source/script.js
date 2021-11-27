@@ -37,7 +37,6 @@ if (minutes < 10) {
 let form = document.querySelector("#searchForm");
 
 function displayWeather(result) {
-  console.log(result);
   let apiTemperature = Math.round(result.data.main.temp);
   let temperature = document.querySelector("#mainTemperature");
   temperature.innerHTML = `${apiTemperature}°C`;
@@ -49,6 +48,11 @@ function displayWeather(result) {
   humidity.innerHTML = `Humidity: ${result.data.main.humidity}%`;
   let city = document.querySelector(".city");
   city.innerHTML = result.data.name;
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${result.data.weather[0].icon}@2x.png`
+  );
 }
 
 function getWeather(event) {
