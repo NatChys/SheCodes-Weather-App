@@ -1,3 +1,4 @@
+search("Zhytomyr");
 function displayWeather(result) {
   let apiTemperature = Math.round(result.data.main.temp);
   let temperature = document.querySelector("#mainTemperature");
@@ -53,20 +54,22 @@ function displayWeather(result) {
   );
 }
 
-function getWeather(event) {
-  event.preventDefault();
-
+function search(city) {
   let searchForm = document.querySelector(".searchBar");
-
-  let providedCity = searchForm.value;
   let apiKey = "828ad76bf021c328eb958dea6c22fb6f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${providedCity}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let providedCity = document.querySelector("#exampleFormControlInput1");
+  search(providedCity.value);
+}
 let form = document.querySelector("#searchForm");
-form.addEventListener("submit", getWeather);
+form.addEventListener("submit", handleSubmit);
 let searchButton = document.querySelector("#searchCityButton");
-searchButton.addEventListener("click", getWeather);
+searchButton.addEventListener("click", handleSubmit);
 
 function handlePosition(position) {
   let latitude = position.coords.latitude;
