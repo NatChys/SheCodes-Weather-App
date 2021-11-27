@@ -1,41 +1,3 @@
-let currentDate = new Date();
-let date = document.querySelector(".date");
-let weekdays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-date.innerHTML = `${weekdays[currentDate.getDay()]}, ${
-  months[currentDate.getUTCMonth()]
-} ${currentDate.getDate()}`;
-
-let time = document.querySelector(".time");
-let minutes = currentDate.getMinutes();
-if (minutes < 10) {
-  time.innerHTML = `${currentDate.getHours()}:0${currentDate.getMinutes()}`;
-} else {
-  time.innerHTML = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
-}
-let form = document.querySelector("#searchForm");
-
 function displayWeather(result) {
   let apiTemperature = Math.round(result.data.main.temp);
   let temperature = document.querySelector("#mainTemperature");
@@ -48,6 +10,42 @@ function displayWeather(result) {
   humidity.innerHTML = `Humidity: ${result.data.main.humidity}%`;
   let city = document.querySelector(".city");
   city.innerHTML = result.data.name;
+  let currentDate = new Date();
+  let date = document.querySelector(".date");
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  date.innerHTML = `${weekdays[currentDate.getDay()]}, ${
+    months[currentDate.getUTCMonth()]
+  } ${currentDate.getDate()}`;
+
+  let time = document.querySelector(".time");
+  let minutes = currentDate.getMinutes();
+  if (minutes < 10) {
+    time.innerHTML = `${currentDate.getHours()}:0${currentDate.getMinutes()}`;
+  } else {
+    time.innerHTML = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
+  }
   let icon = document.querySelector("#icon");
   icon.setAttribute(
     "src",
@@ -65,6 +63,7 @@ function getWeather(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${providedCity}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 }
+let form = document.querySelector("#searchForm");
 form.addEventListener("submit", getWeather);
 let searchButton = document.querySelector("#searchCityButton");
 searchButton.addEventListener("click", getWeather);
