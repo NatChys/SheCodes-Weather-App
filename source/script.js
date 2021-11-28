@@ -1,4 +1,3 @@
-search("Zhytomyr");
 function displayWeather(result) {
   let apiTemperature = Math.round(result.data.main.temp);
   let temperature = document.querySelector("#mainTemperature");
@@ -52,6 +51,7 @@ function displayWeather(result) {
     "src",
     `http://openweathermap.org/img/wn/${result.data.weather[0].icon}@2x.png`
   );
+  currentCelsius = result.data.main.temp;
 }
 
 function search(city) {
@@ -66,6 +66,8 @@ function handleSubmit(event) {
   let providedCity = document.querySelector("#exampleFormControlInput1");
   search(providedCity.value);
 }
+let currentCelsius = null;
+
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
 let searchButton = document.querySelector("#searchCityButton");
@@ -86,16 +88,23 @@ function receivePosition() {
 let geolocationButton = document.querySelector(".geolocationButton");
 geolocationButton.addEventListener("click", receivePosition);
 
-let celcius = document.querySelector("#celcius");
-function showCelcius() {
+let celcius = document.querySelector("#celsius");
+function showCelsius() {
   let temperature = document.querySelector("#mainTemperature");
-  temperature.innerHTML = "17°C";
+  temperature.innerHTML = `${Math.round(currentCelsius)}°C`;
+  fahrenheit.classList.remove("active");
+  celcius.classList.add("active");
 }
-celcius.addEventListener("click", showCelcius);
+celcius.addEventListener("click", showCelsius);
 
 let fahrenheit = document.querySelector("#fahrenheit");
 function showFahrenheit() {
   let temperature = document.querySelector("#mainTemperature");
-  temperature.innerHTML = "66°F";
+  temperature.innerHTML = `${Math.round((currentCelsius * 9) / 5 + 32)}°F`;
+  fahrenheit.classList.add("active");
+  celcius.classList.remove("active");
 }
 fahrenheit.addEventListener("click", showFahrenheit);
+
+search("Zhytomyr");
+console.log(currentCelsius);

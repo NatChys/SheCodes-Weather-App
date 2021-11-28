@@ -1,8 +1,23 @@
-.celcius-fahrenheit {
+.active {
+  font-weight: bold;
+  color: #362529;
+  text-decoration: none;
+  cursor: default;
+}
+.active:hover {
+  color: #362529;
+}
+.celsius-fahrenheit {
   font-size: 16px;
   position: relative;
   top: -28px;
 }
+#celsius,
+#fahrenheit {
+  text-decoration: none;
+  color: #656d7e;
+}
+
 .date {
   font-size: 20px;
   color: #656d7e;
