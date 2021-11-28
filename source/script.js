@@ -47,11 +47,9 @@ function displayWeather(result) {
     time.innerHTML = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
   }
   let icon = document.querySelector("#icon");
-  icon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${result.data.weather[0].icon}@2x.png`
-  );
+  icon.setAttribute("src", `source/${result.data.weather[0].icon}.png`);
   currentCelsius = result.data.main.temp;
+  console.log(result.data.weather[0].icon);
 }
 
 function search(city) {
@@ -107,4 +105,3 @@ function showFahrenheit() {
 fahrenheit.addEventListener("click", showFahrenheit);
 
 search("Zhytomyr");
-console.log(currentCelsius);
