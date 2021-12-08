@@ -49,7 +49,27 @@ function displayWeather(result) {
   let icon = document.querySelector("#icon");
   icon.setAttribute("src", `source/${result.data.weather[0].icon}.png`);
   currentCelsius = result.data.main.temp;
-  console.log(result.data.weather[0].icon);
+}
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecastContainer");
+  let forecastDays = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  let forecastHTML = `<div class="row">`;
+  forecastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+            <span class="weekDay">${day}</span>
+            <span class="forecastDay">07/10</span> <br /><span class="emoji"
+              ><i class="fas fa-cloud-sun"></i>
+            </span>
+            <br /><span class="highestTemperature">14 °C</span>
+            <span class="lowestTemperature">9 °C</span>
+          </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function search(city) {
@@ -105,3 +125,4 @@ function showFahrenheit() {
 fahrenheit.addEventListener("click", showFahrenheit);
 
 search("Zhytomyr");
+displayForecast();
