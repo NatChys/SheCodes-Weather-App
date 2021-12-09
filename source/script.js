@@ -49,6 +49,17 @@ function displayWeather(result) {
   let icon = document.querySelector("#icon");
   icon.setAttribute("src", `source/${result.data.weather[0].icon}.png`);
   currentCelsius = result.data.main.temp;
+
+  forecastCall(result.data.coord);
+}
+function updateForecast(result) {
+  console.log(result.data);
+}
+
+function forecastCall(coords) {
+  let apiKey = "828ad76bf021c328eb958dea6c22fb6f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(updateForecast);
 }
 
 function displayForecast() {
