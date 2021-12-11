@@ -52,31 +52,43 @@ function displayWeather(result) {
 
   forecastCall(result.data.coord);
 }
-function updateForecast(result) {
-  console.log(result.data);
-}
 
 function forecastCall(coords) {
   let apiKey = "828ad76bf021c328eb958dea6c22fb6f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(updateForecast);
+  axios.get(apiUrl).then(displayForecast);
+}
+function formatDay(timestamp) {
+  let forecastDate = new Date(timestamp * 1000);
+  let day = forecastDate.getDay();
+  let forecastDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return forecastDays[day];
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  let forecastResponse = response.data.daily;
+
   let forecastElement = document.querySelector("#forecastContainer");
-  let forecastDays = ["Thu", "Fri", "Sat", "Sun", "Mon"];
   let forecastHTML = `<div class="row">`;
-  forecastDays.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-            <span class="weekDay">${day}</span>
-            <span class="forecastDay">07/10</span> <br /><span class="emoji"
-              ><i class="fas fa-cloud-sun"></i>
+  forecastResponse.forEach(function (dayObject, index) {
+    if (index < 6 && index != 0) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col">
+            <span class="weekDay">${formatDay(dayObject.dt)}</span>
+             <br /><span class="emoji"
+              ><img src="source/${
+                dayObject.weather[0].icon
+              }.png" alt="icon" id="icon" width="50" />
             </span>
-            <br /><span class="highestTemperature">14 °C</span>
-            <span class="lowestTemperature">9 °C</span>
+            <br /><span class="highestTemperature">${Math.round(
+              dayObject.temp.max
+            )} °C</span>
+            <span class="lowestTemperature">${Math.round(
+              dayObject.temp.min
+            )} °C</span>
           </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
 
