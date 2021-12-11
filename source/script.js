@@ -5,7 +5,7 @@ function displayWeather(result) {
   let description = document.querySelector(".clear");
   description.innerHTML = result.data.weather[0].main;
   let wind = document.querySelector("#wind");
-  wind.innerHTML = `Wind: ${Math.round(result.data.wind.speed)} km/h`;
+  wind.innerHTML = `Wind: ${Math.round(result.data.wind.speed)} m/h`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `Humidity: ${result.data.main.humidity}%`;
   let city = document.querySelector(".city");
@@ -67,7 +67,6 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecastResponse = response.data.daily;
-
   let forecastElement = document.querySelector("#forecastContainer");
   let forecastHTML = `<div class="row">`;
   forecastResponse.forEach(function (dayObject, index) {
